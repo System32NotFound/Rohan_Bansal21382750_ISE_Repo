@@ -41,8 +41,6 @@ def character_converter(maze, y, x):
             return '\u2523'  # ┣
         elif up == '|' and left == '-' and right == '-':
             return '\u253B'  # ┻
-        elif down == '|' and left == '-' and right == '-':
-            return '\u253B'  # ┻
         elif up == '|' and right == '-':
             return '\u2517'  # ┗ 
         elif up == '|' and left == '-':
@@ -54,11 +52,11 @@ def character_converter(maze, y, x):
         elif up == '|' and down == '|':
             return '\u2503'  # ┃
         elif up == '|' or down == '|':
-      	    return '\u257B'
+      	    return '\u257B'  # ╻
         elif left == '-' and right == '-':
             return '\u2501'  # ━
         elif left == '-' or right == '-':
-            return '\u2578'  # ━
+            return '\u2578'  # ╸
     elif maze[y][x] == '|':
         return '\u2503'  # ┃
     elif maze[y][x] == '-':
@@ -72,7 +70,7 @@ def generate_maze(maze):
     these values are then replaced with the converted characters. A nested for-loop is used to iterate through the two dimensions.
     The module imports the maze array which contains the characters that are going to be converted. This array is then passed to the character_converter module along with the counter variables that contain the cell index information.
     The module exports the new_maze array."""
-    
+    print(maze)
     new_maze = [[''] * len(row) for row in maze]
     for y in range(len(maze)):
         for x in range(len(maze[y])):
