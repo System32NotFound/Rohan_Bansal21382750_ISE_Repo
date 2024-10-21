@@ -30,7 +30,7 @@ def get_neighbors(maze, y, x):
 
 
 def character_converter(maze, y, x):
-    """This module is responsible for converting the character to box-drawing characters. It goes through the possible neighbor combinations and converts the character according to that.
+    """This module is responsible for converting the character to box-drawing characters. It goes through the neighbors of the cell and based on the characters converts them to box-drawing characters.
     This module imports the maze array and the counter variables, x and y.
     This module exports the character. Since this module is called for in a for-loop, it will return the character each time it's executed in the loop."""
     
@@ -51,10 +51,14 @@ def character_converter(maze, y, x):
             return '\u250F'  # ┏
         elif down == '|' and left == '-':
             return '\u2513'  # ┓
-        elif up == '|' or down == '|':
+        elif up == '|' and down == '|':
             return '\u2503'  # ┃
-        elif left == '-' or right == '-':
+        elif up == '|' or down == '|':
+      	    return '\u257B'
+        elif left == '-' and right == '-':
             return '\u2501'  # ━
+        elif left == '-' or right == '-':
+            return '\u2578'  # ━
     elif maze[y][x] == '|':
         return '\u2503'  # ┃
     elif maze[y][x] == '-':
@@ -107,8 +111,11 @@ def print_maze(maze):
 
 def main():
     """The module is the main module of the program that brings all the other modules of the program together. 
-    It calls upon the other modules as required. It can be considered the master module that runs the program."""
-    
+    It calls upon the other modules as required. It can be considered the master module that runs the program.
+    ** Added a check to make sure user has provided two filenames"""
+    if len(sys.argv) != 3:
+        print("Please provide two filenames (input)(output)")
+        sys.exit(1)
     input_filename = sys.argv[1]
     output_filename = sys.argv[2]
     
