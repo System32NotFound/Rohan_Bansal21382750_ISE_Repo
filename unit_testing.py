@@ -18,16 +18,16 @@ class TestMazeGenerator(unittest.TestCase):
 
 
     def test_read_maze(self):
-        # Valid filepath
+        # for a valid filepath
         with open('maze_input.txt', 'w') as f:
             f.write("+-+\n| |\n-+-\n")
         result = read_maze('maze_input.txt')
         self.assertEqual(result, [list("+-+"), list("| |"), list("-+-")])
         os.remove('maze_input.txt')
 
-        # Invalid filepath
+        # For Invalid filepath
         with self.assertRaises(FileNotFoundError):
-            read_maze('nonexistent_maze.txt')
+            read_maze('invalid_maze.txt')
 
     def test_save_maze(self):
         maze = [list("+-+"), list("| |"), list("-+-")]
