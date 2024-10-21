@@ -70,7 +70,6 @@ def generate_maze(maze):
     these values are then replaced with the converted characters. A nested for-loop is used to iterate through the two dimensions.
     The module imports the maze array which contains the characters that are going to be converted. This array is then passed to the character_converter module along with the counter variables that contain the cell index information.
     The module exports the new_maze array."""
-    print(maze)
     new_maze = [[''] * len(row) for row in maze]
     for y in range(len(maze)):
         for x in range(len(maze[y])):
